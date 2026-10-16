@@ -285,8 +285,10 @@ details.sub>.inner{padding:6px 14px 12px}
 .tnode .thead .tt{flex:1;min-width:0;color:var(--title)}
 .tnode .thead .ce{display:block;font-size:.78rem;color:var(--muted);font-weight:400;margin-top:2px}
 .tnode .thead .cnt{color:var(--muted);font-size:.8rem;flex:0 0 auto}
-.tnode .thead .arrow{color:var(--accent);font-size:.7rem;flex:0 0 auto}
-.tnode .tbody{padding:6px 14px 12px}
+.tnode .thead .arrow{color:var(--accent);font-size:.7rem;flex:0 0 auto;transition:transform .2s ease}
+.tnode.open .thead .arrow{transform:rotate(-180deg)}
+.tnode .tbody{display:none;padding:6px 14px 12px}
+.tnode.open > .tbody{display:block}
 .tnode .tdesc,.topic-desc{font-size:.95rem;line-height:1.7;color:var(--ink);margin:6px 0}
 .topic-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:8px 0}
 .topic-head h2{margin:0;font-size:1.25rem;color:var(--title)}
@@ -424,6 +426,7 @@ mark{background:var(--mark);color:var(--ink);border-radius:2px;padding:0 2px}
   .tnode .thead{padding:11px 12px;font-size:.9rem;gap:8px}
   .tnode .thead .num{min-width:36px;font-size:.78rem}
   .tnode .tbody{padding:4px 12px 10px}
+  .tnode.open > .tbody{display:block}
   .tnode .tdesc,.topic-desc{font-size:.92rem}
   .topic-head h2{font-size:1.1rem}
   .lv-acts{font-size:.8rem;gap:2px 8px}
