@@ -2,7 +2,7 @@
 <html lang="te">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>My Bible Tool — Telugu Study Resource</title>
 <meta name="theme-color" content="#3b2a17">
 <meta name="description" content="My Bible Tool — Telugu Bible study resource (Bible, notes, dictionary, topics)">
@@ -131,6 +131,114 @@ nav button.active{background:var(--chip-on);color:var(--chip-on-ink);font-weight
 /* Main layout */
 main{max-width:980px;margin:0 auto;padding:20px 16px calc(88px + var(--safe-bottom))}
 .view{display:none}.view.active{display:block}
+.view-app{padding:0!important;max-width:none!important}
+.view-app .app-frame-wrap{margin:0 -16px; /* counteract main padding on sides */}
+/* Embedded extra apps — responsive */
+.embed-frame{
+  width:100%;
+  height:min(70vh, 720px);
+  min-height:360px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:#fff;
+  box-shadow:none;
+  display:block;
+  /* mobile scrolling inside iframe */
+  -webkit-overflow-scrolling:touch;
+  overflow:auto;
+}
+details.sect .embed-frame{ margin:0 0 12px; }
+details.sect > .card{ padding-top:4px; max-width:100%; overflow:hidden; }
+.embed-toolbar{
+  display:flex; gap:8px; flex-wrap:wrap; align-items:center;
+  margin:0 0 10px; padding:0 2px;
+}
+.embed-toolbar .open-ext{
+  font:inherit; font-size:.85rem; padding:7px 12px; border-radius:10px;
+  border:1px solid var(--line); background:var(--card); color:var(--text);
+  cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; gap:6px;
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
+}
+.embed-toolbar .open-ext:hover{border-color:var(--accent,#b45309); color:var(--accent,#b45309)}
+
+/* Extra Resources: touch-friendly summaries */
+#view-extras details.sect > summary{
+  min-height:48px;
+  padding:14px 16px;
+  font-size:1rem;
+  line-height:1.35;
+  gap:8px;
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
+  user-select:none;
+}
+#view-extras details.sect > summary .meta{
+  font-size:.75rem;
+  font-weight:500;
+  opacity:.75;
+  white-space:normal;
+  text-align:right;
+  max-width:45%;
+}
+#view-extras .lead{ font-size:.9rem; }
+#view-extras{ max-width:100%; overflow-x:hidden; }
+
+/* Mobile: taller embeds, full-bleed, larger touch targets */
+@media (max-width:640px){
+  #view-extras details.sect > summary{
+    flex-wrap:wrap;
+    min-height:52px;
+    padding:14px 14px;
+  }
+  #view-extras details.sect > summary .meta{
+    max-width:100%;
+    text-align:left;
+    width:100%;
+    margin-top:2px;
+    font-size:.72rem;
+  }
+  #view-extras details.sect > .card{
+    padding:10px 10px 12px !important;
+  }
+  .embed-toolbar{ margin-bottom:8px; }
+  .embed-toolbar .open-ext{
+    width:100%;
+    justify-content:center;
+    padding:12px 14px;
+    font-size:.9rem;
+    min-height:44px;
+  }
+  .embed-frame{
+    width:100%;
+    height:calc(100dvh - 200px);
+    height:calc(100vh - 200px);
+    min-height:55vh;
+    max-height:none;
+    border-radius:8px;
+    /* iOS iframe scrolling */
+    -webkit-overflow-scrolling:touch;
+  }
+  /* reduce main side padding impact for embeds */
+  #view-extras .card .lead{ margin-bottom:10px; }
+}
+@media (max-width:380px){
+  .embed-frame{
+    height:calc(100dvh - 180px);
+    height:calc(100vh - 180px);
+    min-height:50vh;
+  }
+  #view-extras details.sect > summary{ font-size:.95rem; }
+}
+/* Landscape phones: use more horizontal space, shorter chrome */
+@media (max-width:900px) and (orientation:landscape){
+  .embed-frame{
+    height:calc(100dvh - 120px);
+    height:calc(100vh - 120px);
+    min-height:280px;
+  }
+}
+
 h2.sect{font-size:1.35rem;margin:6px 0 6px;color:var(--title);font-weight:700;letter-spacing:.01em}
 p.lead{color:var(--muted);margin:0 0 16px;font-size:.95rem;line-height:1.6}
 
@@ -486,6 +594,7 @@ mark{background:var(--mark);color:var(--ink);border-radius:2px;padding:0 2px}
     <button data-v="sayings">Jesus&rsquo; Words</button>
     <button data-v="topical">Topical Guide</button>
     <button data-v="tools">My Notes &amp; Settings</button>
+    <button data-v="extras">Extra Resources</button>
     <button data-v="about">About</button>
     <div class="navtools">
       <button id="btnExpandAll" type="button">&#8853; Expand all</button>
@@ -537,7 +646,56 @@ mark{background:var(--mark);color:var(--ink);border-radius:2px;padding:0 2px}
     <div class="wcard" id="workerBody"></div>
   </section>
 
-  <section id="view-about" class="view">
+  
+  
+  <section id="view-extras" class="view">
+    <h2 class="sect">Extra Resources</h2>
+    <p class="lead">Additional study tools. Tap a section title to expand or collapse it. Use Expand all / Collapse all in the menu for all three at once.</p>
+
+    <details class="sect" open>
+      <summary>
+        <span>1010 Bible Illustrations</span>
+        <span class="meta">1,010 illustrations</span>
+      </summary>
+      <div class="card" style="margin:0;border:0;box-shadow:none;border-radius:0">
+        <p class="lead" style="margin-top:0">Searchable collection of sermon illustrations for preachers and teachers. Use search and category filters inside the panel.</p>
+        <div class="embed-toolbar" style="margin-bottom:8px">
+          <a class="open-ext" href="1010-bible-illustrations.html" target="_blank" rel="noopener">Open full page ↗</a>
+        </div>
+        <iframe class="embed-frame" src="1010-bible-illustrations.html" title="1010 Bible Illustrations" loading="lazy"></iframe>
+      </div>
+    </details>
+
+    <details class="sect">
+      <summary>
+        <span>Sermon Outlines (John Ritchie)</span>
+        <span class="meta">~1,000 outlines</span>
+      </summary>
+      <div class="card" style="margin:0;border:0;box-shadow:none;border-radius:0">
+        <p class="lead" style="margin-top:0">Editable sermon outlines with categories, search, and links into the offline Telugu Bible.</p>
+        <div class="embed-toolbar" style="margin-bottom:8px">
+          <a class="open-ext" href="sermon-outlines-1000.html" target="_blank" rel="noopener">Open full page ↗</a>
+        </div>
+        <iframe class="embed-frame" src="sermon-outlines-1000.html" title="Sermon Outlines" loading="lazy"></iframe>
+      </div>
+    </details>
+
+    <details class="sect">
+      <summary>
+        <span>Thompson Study Companion</span>
+        <span class="meta">Chain-reference · Concordance · KJV + Telugu</span>
+      </summary>
+      <div class="card" style="margin:0;border:0;box-shadow:none;border-radius:0">
+        <p class="lead" style="margin-top:0">Thompson Chain-Reference topics, concordance, character studies, and integrated KJV + Telugu Bible.</p>
+        <div class="embed-toolbar" style="margin-bottom:8px">
+          <a class="open-ext" href="Thompson-Study-App.html" target="_blank" rel="noopener">Open full page ↗</a>
+        </div>
+        <iframe class="embed-frame" src="Thompson-Study-App.html" title="Thompson Study Companion" loading="lazy"></iframe>
+      </div>
+    </details>
+  </section>
+
+<section id="view-about" class="view">
     <h2 class="sect">About / Sources</h2>
     <div class="card about">
       <p><b>250 Events in the Life of Christ</b> is a Telugu study resource built on a harmony of the Gospels. It is a single HTML file; it opens in any browser, with no internet needed.</p>
@@ -549,7 +707,10 @@ mark{background:var(--mark);color:var(--ink);border-radius:2px;padding:0 2px}
       &bull; Christian Worker&rsquo;s Resource (Telugu)<br>
       &bull; Book themes (Megathemes) for all 66 books<br>
       &bull; The Words of Jesus &mdash; 80 sayings in 15 periods, with the Telugu scripture<br>
-      &bull; Topical Bible Guide &mdash; 9 sections, 52 subsections and 2,454 numbered themes, each with its key verses</p>
+      &bull; Topical Bible Guide &mdash; 9 sections, 52 subsections and 2,454 numbered themes, each with its key verses<br>
+      &bull; <b>1010 Bible Illustrations</b> &mdash; searchable sermon illustrations for preachers and teachers<br>
+      &bull; <b>Sermon Outlines (John Ritchie)</b> &mdash; about 1,000 editable outlines with Telugu Bible links<br>
+      &bull; <b>Thompson Study Companion</b> &mdash; chain-reference topics, concordance, character studies, KJV + Telugu Bible</p>
       <h3>Sources</h3>
       <p>Here is exactly which file each part of the app comes from.</p>
       <p>
