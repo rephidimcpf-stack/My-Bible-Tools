@@ -147,6 +147,8 @@ main{max-width:980px;margin:0 auto;padding:20px 16px calc(88px + var(--safe-bott
   -webkit-overflow-scrolling:touch;
   overflow:auto;
 }
+#view-illustrations,#view-outlines,#view-thompson{ max-width:100%; overflow-x:hidden; }
+#view-illustrations .lead,#view-outlines .lead,#view-thompson .lead{ font-size:.9rem; }
 details.sect .embed-frame{ margin:0 0 12px; }
 details.sect > .card{ padding-top:4px; max-width:100%; overflow:hidden; }
 .embed-toolbar{
@@ -594,7 +596,9 @@ mark{background:var(--mark);color:var(--ink);border-radius:2px;padding:0 2px}
     <button data-v="sayings">Jesus&rsquo; Words</button>
     <button data-v="topical">Topical Guide</button>
     <button data-v="tools">My Notes &amp; Settings</button>
-    <button data-v="extras">Extra Resources</button>
+    <button data-v="illustrations">1010 Illustrations</button>
+    <button data-v="outlines">Sermon Outlines</button>
+    <button data-v="thompson">Thompson Study</button>
     <button data-v="about">About</button>
     <div class="navtools">
       <button id="btnExpandAll" type="button">&#8853; Expand all</button>
@@ -648,51 +652,31 @@ mark{background:var(--mark);color:var(--ink);border-radius:2px;padding:0 2px}
 
   
   
-  <section id="view-extras" class="view">
-    <h2 class="sect">Extra Resources</h2>
-    <p class="lead">Additional study tools. Tap a section title to expand or collapse it. Use Expand all / Collapse all in the menu for all three at once.</p>
+  <section id="view-illustrations" class="view">
+    <h2 class="sect">1010 Bible Illustrations</h2>
+    <p class="lead">Searchable collection of sermon illustrations for preachers and teachers. Use the search box and category filters inside the panel.</p>
+    <div class="embed-toolbar" style="margin-bottom:8px">
+      <a class="open-ext" href="1010-bible-illustrations.html" target="_blank" rel="noopener">Open full page &#8599;</a>
+    </div>
+    <iframe class="embed-frame" src="1010-bible-illustrations.html" title="1010 Bible Illustrations" loading="lazy"></iframe>
+  </section>
 
-    <details class="sect" open>
-      <summary>
-        <span>1010 Bible Illustrations</span>
-        <span class="meta">1,010 illustrations</span>
-      </summary>
-      <div class="card" style="margin:0;border:0;box-shadow:none;border-radius:0">
-        <p class="lead" style="margin-top:0">Searchable collection of sermon illustrations for preachers and teachers. Use search and category filters inside the panel.</p>
-        <div class="embed-toolbar" style="margin-bottom:8px">
-          <a class="open-ext" href="1010-bible-illustrations.html" target="_blank" rel="noopener">Open full page ↗</a>
-        </div>
-        <iframe class="embed-frame" src="1010-bible-illustrations.html" title="1010 Bible Illustrations" loading="lazy"></iframe>
-      </div>
-    </details>
+  <section id="view-outlines" class="view">
+    <h2 class="sect">Sermon Outlines (John Ritchie)</h2>
+    <p class="lead">Editable sermon outlines with categories, search, and links into the offline Telugu Bible.</p>
+    <div class="embed-toolbar" style="margin-bottom:8px">
+      <a class="open-ext" href="sermon-outlines-1000.html" target="_blank" rel="noopener">Open full page &#8599;</a>
+    </div>
+    <iframe class="embed-frame" src="sermon-outlines-1000.html" title="Sermon Outlines" loading="lazy"></iframe>
+  </section>
 
-    <details class="sect">
-      <summary>
-        <span>Sermon Outlines (John Ritchie)</span>
-        <span class="meta">~1,000 outlines</span>
-      </summary>
-      <div class="card" style="margin:0;border:0;box-shadow:none;border-radius:0">
-        <p class="lead" style="margin-top:0">Editable sermon outlines with categories, search, and links into the offline Telugu Bible.</p>
-        <div class="embed-toolbar" style="margin-bottom:8px">
-          <a class="open-ext" href="sermon-outlines-1000.html" target="_blank" rel="noopener">Open full page ↗</a>
-        </div>
-        <iframe class="embed-frame" src="sermon-outlines-1000.html" title="Sermon Outlines" loading="lazy"></iframe>
-      </div>
-    </details>
-
-    <details class="sect">
-      <summary>
-        <span>Thompson Study Companion</span>
-        <span class="meta">Chain-reference · Concordance · KJV + Telugu</span>
-      </summary>
-      <div class="card" style="margin:0;border:0;box-shadow:none;border-radius:0">
-        <p class="lead" style="margin-top:0">Thompson Chain-Reference topics, concordance, character studies, and integrated KJV + Telugu Bible.</p>
-        <div class="embed-toolbar" style="margin-bottom:8px">
-          <a class="open-ext" href="Thompson-Study-App.html" target="_blank" rel="noopener">Open full page ↗</a>
-        </div>
-        <iframe class="embed-frame" src="Thompson-Study-App.html" title="Thompson Study Companion" loading="lazy"></iframe>
-      </div>
-    </details>
+  <section id="view-thompson" class="view">
+    <h2 class="sect">Thompson Study Companion</h2>
+    <p class="lead">Thompson Chain-Reference topics, concordance, character studies, and integrated KJV + Telugu Bible.</p>
+    <div class="embed-toolbar" style="margin-bottom:8px">
+      <a class="open-ext" href="Thompson-Study-App.html" target="_blank" rel="noopener">Open full page &#8599;</a>
+    </div>
+    <iframe class="embed-frame" src="Thompson-Study-App.html" title="Thompson Study Companion" loading="lazy"></iframe>
   </section>
 
 <section id="view-about" class="view">
